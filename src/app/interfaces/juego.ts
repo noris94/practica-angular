@@ -1,7 +1,7 @@
 import { Genero } from "./genero";
 import { Plataforma } from "./plataforma";
 
-export interface Juego {
+const interface Juego {
     id: number,
     nombre: string,
     desarrolador: string,

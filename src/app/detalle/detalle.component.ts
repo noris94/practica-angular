@@ -5,7 +5,7 @@ import { HomeService } from '../service/home.service';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-detalle',
+  selector: 'edicion',
   templateUrl: './detalle.component.html',
   styleUrls: ['./detalle.component.css']
 })

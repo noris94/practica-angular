@@ -6,7 +6,7 @@ import { HomeService } from '../service/home.service';
 import { AlertasService } from '../service/alertas.service';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-lista',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

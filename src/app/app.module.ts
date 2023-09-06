@@ -18,7 +18,6 @@ import { InMemoryDataService } from './service/in-memory-data.service';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     DetalleComponent,
     NuevoComponent,
     AlertasComponent,

@@ -8,9 +8,8 @@
         <div><span>G&eacute;nero: </span>{{juego.genero?.nombre}}</div>
         <div><span>Precio: </span>{{juego.precio}}</div>
         <div><span>Desarrolador: </span>{{juego.desarrolador}}</div>
-        <div><span>Fecha de lanzamiento: </span>{{juego.fechaLanzamiento | date: 'shortDate'}}</div>
+        <div><span>Fecha de lanzamiento: </span>{{juego.fechaLanzamiento}}</div>
         <div><img src="{{juego.plataformas![0].icon}}"></div>
-        <!-- <button [class.selected]="juego === seleccionado" type="button" (click)="onSelect(juego)"></button> -->
     </li>
 </ul>
 

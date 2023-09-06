@@ -11,20 +11,13 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HomeService {
-
   private juegosApiUrl = 'api/juegos';
   
   constructor(
     private http: HttpClient, private alertasService: AlertasService) { }
 
-  /*getJuegos(): Juego[] {
-    return JUEGOS;
-  }*/
 
   getJuegos(): Observable<Juego[]> {
-    // const juegos = of(JUEGOS);
-    // this.alertasService.add('HomeService: fetched');
-    // return juegos;
     return this.http.get<Juego[]>(this.juegosApiUrl)
     .pipe(
       catchError(this.handleError<Juego[]>('getJuegos', []))
@@ -32,8 +25,6 @@ export class HomeService {
   }
 
   getJuego(id: number): Observable<Juego> {
-    // const juego = JUEGOS.find(current => current.id === id)!;
-    // return of(juego);
     const url = `${this.juegosApiUrl}/${id}`;
     return this.http.get<Juego>(url).pipe(
       catchError(this.handleError<Juego>(`getJuego=${id}`))
@@ -43,7 +34,6 @@ export class HomeService {
   private log(message: string) {
     this.alertasService.add(`JuegosService: ${message}`);
   }
-
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
