@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Juego } from '../interfaces/juego';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HomeService } from '../service/home.service';
 import { Location } from '@angular/common';
 
@@ -11,13 +11,13 @@ import { Location } from '@angular/common';
 })
 export class DetalleComponent {
 
-  // @Input() juego?: Juego;
   juego: Juego | undefined;
 
   constructor(
     private route: ActivatedRoute,
     private homeService: HomeService,
-    private location: Location
+    private location: Location,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +39,15 @@ export class DetalleComponent {
       this.homeService.update(this.juego)
         .subscribe(() => this.regresar());
     }
+  }
+
+  delete(): void {
+    if(this.juego){
+      this.homeService.delete(this.juego.id!).subscribe(()=>{
+        this.router.navigate(['/','juegos']);
+      });
+    }
+    
   }
 
 }

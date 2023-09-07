@@ -1,8 +1,8 @@
 import { Genero } from "./genero";
 import { Plataforma } from "./plataforma";
 
-const interface Juego {
-    id: number,
+export interface Juego {
+    id?: number,
     nombre: string,
     desarrolador: string,
     descripcion: string,
@@ -10,5 +10,5 @@ const interface Juego {
     descuento: number,//porcentaje
     fechaLanzamiento: Date,
     genero?: Genero,
-    plataformas?: [Plataforma],
+    plataformas?: Plataforma[],
 }

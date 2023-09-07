@@ -4,7 +4,7 @@ import { HomeService } from '../service/home.service';
 
 @Component({
   selector: 'app-estrenos',
-  templateUrl: './component.html',
+  templateUrl: './estrenos.component.html',
   styleUrls: ['./estrenos.component.css']
 })
 export class EstrenosComponent implements OnInit {

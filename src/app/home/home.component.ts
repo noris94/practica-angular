@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Juego } from '../interfaces/juego';
-import { JUEGOS } from '../mock';
+import { JUEGOS, PLATAFORMAS } from '../mock';
 import { Observable, of } from 'rxjs';
 import { HomeService } from '../service/home.service';
 import { AlertasService } from '../service/alertas.service';
@@ -13,7 +13,22 @@ import { AlertasService } from '../service/alertas.service';
 export class HomeComponent implements OnInit {
   juegos: Juego[] = [];
 
+  plataformas=PLATAFORMAS;
+
   constructor(private homeService: HomeService, public alertasService: AlertasService) {}
+
+  fechaLanzamiento:string = new Date().toISOString().split('T')[0];
+
+  newJuego:Juego ={
+    nombre: '',
+    desarrolador: '',
+    descripcion: '',
+    precio: 0,
+    descuento: 0,//porcentaje
+    fechaLanzamiento: new Date(),
+    genero:{nombre:''},
+    plataformas:[]
+  }
 
   ngOnInit(): void {
     this.getJuegos();
@@ -24,19 +39,20 @@ export class HomeComponent implements OnInit {
     this.homeService.getJuegos().subscribe(juegos => this.juegos = juegos);
   }
 
-  add(nombre: string): void {
-    nombre = nombre.trim();
-    if (!nombre) { return; }
+  add(): void {
+    console.log(this.newJuego)
+    const fechaLanzamientoDate = new Date(this.fechaLanzamiento);
+
     const nuevo: Juego = {
       id: JUEGOS.length +1,
-      nombre: nombre,
-      desarrolador: "",
-      descripcion: "",
-      precio: 0,
-      descuento: 0,
-      fechaLanzamiento: new Date(),
-      genero: undefined,
-      plataformas: undefined,
+      nombre: this.newJuego.nombre,
+      desarrolador: this.newJuego.desarrolador,
+      descripcion: this.newJuego.descripcion,
+      precio: this.newJuego.precio,
+      descuento: this.newJuego.descuento,
+      fechaLanzamiento: fechaLanzamientoDate,
+      genero: this.newJuego.genero,
+      plataformas: this.newJuego.plataformas,
     };
     this.homeService.add(nuevo)
       .subscribe(current => {
@@ -46,7 +62,7 @@ export class HomeComponent implements OnInit {
 
   delete(juego: Juego): void {
     this.juegos = this.juegos.filter(current => current !== juego);
-    this.homeService.delete(juego.id).subscribe();
+    //this.homeService.delete(juego.id).subscribe();
   }
 
 }

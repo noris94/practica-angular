@@ -21,7 +21,8 @@ import { InMemoryDataService } from './service/in-memory-data.service';
     DetalleComponent,
     NuevoComponent,
     AlertasComponent,
-    EstrenosComponent
+    EstrenosComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

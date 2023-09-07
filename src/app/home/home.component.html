@@ -4,6 +4,7 @@
         <a routerLink="/juego/{{juego.id}}">
             <span class="badge">{{juego.id}}</span> {{juego.nombre}}
         </a>
+        <span style="float: right;" (click)="delete(juego)">Eliminar</span>
         <div><span>Descripci&oacute;n: </span>{{juego.descripcion}}</div>
         <div><span>G&eacute;nero: </span>{{juego.genero?.nombre}}</div>
         <div><span>Precio: </span>{{juego.precio}}</div>
@@ -15,8 +16,41 @@
 
 <div>
     <label for="new">Nombre: </label>
-    <input id="new" #nombre />
-    <button type="button" class="add-button" (click)="add(nombre.value); nombre.value=''">
+    <input id="new" [(ngModel)]="newJuego.nombre" />
+</div>
+<div>
+    <label for="developer">Desarrollador: </label>
+    <input id="developer" [(ngModel)]="newJuego.desarrolador"/>
+</div>
+<div>
+    <label for="description">Descripcion: </label>
+    <input id="description" [(ngModel)]="newJuego.descripcion"/>
+</div>
+<div>
+    <label for="price">Precio: </label>
+    <input type="number" id="price" [(ngModel)]="newJuego.precio"/>
+</div>
+<div>
+    <label for="discount">Descuento: </label>
+    <input type="number" id="discount" [(ngModel)]="newJuego.descuento" />
+</div>
+<div>
+    <label for="date">Fecha de Lanzamiento: </label>
+    <input id="date" [(ngModel)]="fechaLanzamiento" />
+</div>
+<div>
+    <label for="genre">Genero: </label>
+    <input id="genre" [(ngModel)]="newJuego.genero!.nombre" />
+</div>
+<div>
+    <label for="platforms">Plataformas: </label>
+    <select multiple id="platforms" [(ngModel)] ="newJuego.plataformas" >
+        <option *ngFor="let p of plataformas" [value]="p">{{p.nombre}}</option>
+
+    </select>
+</div>
+<div>
+    <button type="button" class="add-button" (click)="add();">
       Agregar
     </button>
-  </div>
+</div>
